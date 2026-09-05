@@ -16,11 +16,10 @@ Adiministrador
 - RF05 - Consultar o estoque atual dos produtos;
 - RF06 - Identificar produtos com estoque baixo;
 - RF07 - Fazer um alerta para produtos com estoque baixo;
-- RF08 - Calcular uma quantidade recomendada de compra dos produtos;
-- RF09 - Registrar o histórico de movimentações;
-- RF10 - Armazenar histórico de vendas;
-- RF011 - Analisar o comportamento das vendas;
-- RF012 - Utilizar o histórico de vendas/movimentações posteriormente para fazer uma previsão de demanda;
+- RF08 - Registrar o histórico de movimentações;
+- RF09 - Armazenar histórico de vendas;
+- RF10 - Analisar o comportamento das vendas Para calcular a quantidades de produtos a ser comprado;
+- RF11 - Utilizar o histórico de vendas/movimentações posteriormente para fazer uma previsão de demanda;
 
 ## Requisitos Não Funcionais
 
@@ -31,11 +30,9 @@ Adiministrador
 
 ## Regras de Negócios
 
-- RN01 - Cada Produto terá o seu estoque minimo
-- RN02 - Só recomanda a comprar de novos produtos se o estoque estiver baixo
+- RN01 - Cada Produto terá o seu estoque minimo com base em analise de vendas
+- RN02 - Só recomanda a comprar de um produto com base na previsão de estoque do mês seguinte
 - RN03 - A saida de produto não tem que ser necessariamnete a venda de um produto
-- RN04 - As saidas de Produtos(vendas/develução) tem que ser exportadas em uma planilha. 
-
 
 ## Decisões Técnicas
 
