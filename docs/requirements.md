@@ -11,15 +11,14 @@ Adiministrador
 
 - RF01 - Cadastrar produtos;
 - RF02 - Consultar produtos; 
-- RF03 — Registrar entradas de produtos.
+- RF03 — Registrar entradas de produtos;
 - RF04 - Registrar saídas de produtos; 
-- RF05 - Consultar o estoque atual dos produtos;
-- RF06 - Identificar produtos com estoque baixo;
-- RF07 - Fazer um alerta para produtos com estoque baixo;
-- RF08 - Registrar o histórico de movimentações;
-- RF09 - Armazenar histórico de vendas;
-- RF10 - Analisar o comportamento das vendas Para calcular a quantidades de produtos a ser comprado;
-- RF11 - Utilizar o histórico de vendas/movimentações posteriormente para fazer uma previsão de demanda;
+- RF05 - Identificar produtos com estoque baixo;
+- RF06 - Fazer um alerta para produtos com estoque baixo;
+- RF07 - Registrar o histórico de movimentações;
+- RF08 - Armazenar histórico de vendas;
+- RF9 - Calcular a quantidade de produtos a ser comprada com base no comportamento de vendas.
+- RF10 - Implementar previsão de demanda a partir do histórico de vendas/movimentações, para uso futuro no cálculo de reposição (RF09).
 
 ## Requisitos Não Funcionais
 
@@ -33,6 +32,7 @@ Adiministrador
 - RN01 - Cada Produto terá o seu estoque minimo com base em analise de vendas
 - RN02 - Só recomanda a comprar de um produto com base na previsão de estoque do mês seguinte
 - RN03 - A saida de produto não tem que ser necessariamnete a venda de um produto
+- RN04 - O sistema não deve permitir que o estoque fique negativo.
 
 ## Decisões Técnicas
 
