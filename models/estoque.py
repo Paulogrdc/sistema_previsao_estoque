@@ -1,0 +1,4 @@
+
+
+class Estoque: 
+    pass 
