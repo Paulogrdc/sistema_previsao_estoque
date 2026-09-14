@@ -3,8 +3,8 @@
 class Estoque: 
     def __init__(self, produto:object, id:int , quantidade:int):
          self.produto = produto
-         self._id=  id
-         self.quantidade = quantidade
+         self._id=  id  # -> fazer um property aqui 
+         self.quantidade = quantidade # -> fazer um property aqui 
 
 
     def receber_produto(self, quant):
