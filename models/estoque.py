@@ -1,11 +1,13 @@
-
+from produto import Produto 
+from rich import inspect
 
 class Estoque: 
-    def __init__(self, produto:object, id:int , quantidade:int):
+    def __init__(self, id:int, produto:str, quantidade:int):
          self.produto = produto
-         self._id=  id  # -> fazer um property aqui 
-         self.quantidade = quantidade # -> fazer um property aqui 
+         self._id=  id  
+         self._quantidade = None 
 
+         self.quantidade = quantidade
 
     @property 
     def id(self): 
@@ -13,21 +15,32 @@ class Estoque:
 
     @id.setter
     def id(self, valor): 
-          if valor <= 0: 
+          if valor <=0: 
                raise ValueError("Valor invalido! ")
           else: 
                self._populacao = valor
 
+
     @property
     def quantidade(self):
-         if self.quantidade < 0: 
-          print("Alerta! O valor do estoque não pode ser negativo!") 
-        
+         return self._quantidade 
+
+    @quantidade.setter
+    def quantidade(self,valor): 
+         if valor < 0: 
+              print("Valor invalido! O estoque não pode ser negativo. ")
+         else: 
+              self._quantidade = valor  
+
+
     def receber_produto(self, quant):
-         pass
+         self.quantidade += quant
+         return self.quantidade
 
     def retirar_produto(self,quant):
-         pass 
+          self.quantidade -= quant
+          return self.quantidade
+         
 
     def ind_estoque_baixo(self):
          pass
