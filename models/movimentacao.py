@@ -10,7 +10,6 @@ class Movimentacao:
         self.tipo_movimentacao = tipo_movimentacao
 
 
-
     @property
     def id(self): 
         return self._id
