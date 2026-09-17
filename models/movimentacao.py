@@ -1,8 +1,8 @@
-from produto import Produto, p1
+from models.produto import p1 
 from rich import inspect
 
 class Movimentacao: 
-    def __init__(self, id: int, data:str , produto:object, quantidade:int, tipo_movimentacao:str):
+    def __init__(self, id: int, data:str , produto:object , quantidade:int, tipo_movimentacao:str ):
         self._id = id 
         self.data = data 
         self.produto = produto 
@@ -24,8 +24,5 @@ class Movimentacao:
 
 
 
-mv1 = Movimentacao(1,"15/09/2026", p1, 10, "compra")
 
-print(mv1.produto.nome_produto) 
 
-#inspect(mv1, methods=True, private=True)

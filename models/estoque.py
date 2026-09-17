@@ -1,4 +1,4 @@
-from models.produto import Produto, P2
+from models.produto import Produto 
 from rich import inspect
 
 class Estoque: 

@@ -3,7 +3,7 @@ from rich import inspect
 class Produto: 
     def __init__(self, nome:str, id:int, preco:float, categoria:str, estoque_min:int = 0 ):
         self.nome_produto = nome
-        self._id = id # -> fazer um property aqui 
+        self._id = id 
         self.preco = preco
         self.categoria = categoria
         self._estoque_min = estoque_min
@@ -34,3 +34,4 @@ class Produto:
 
 
 
+p1 = Produto("monitor", 2,  1034.22, "periferico", 20)
