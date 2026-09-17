@@ -1,8 +1,8 @@
-from produto import Produto 
+from models.produto import Produto, P2
 from rich import inspect
 
 class Estoque: 
-    def __init__(self, id:int, produto:str, quantidade:int):
+    def __init__(self, id:int = 1 , produto:object = Produto, quantidade:int = 1 ):
          self.produto = produto
          self._id=  id  
          self._quantidade = None 
@@ -15,7 +15,7 @@ class Estoque:
 
     @id.setter
     def id(self, valor): 
-          if valor <=0: 
+          if valor < 0: 
                raise ValueError("Valor invalido! ")
           else: 
                self._populacao = valor
@@ -44,3 +44,7 @@ class Estoque:
 
     def ind_estoque_baixo(self):
          pass
+
+
+
+

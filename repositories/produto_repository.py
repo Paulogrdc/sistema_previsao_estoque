@@ -1,7 +1,7 @@
 from database import conectar
-from models.produto import p1
+from models.produto import P2
 
-class Repositoryproduto: 
+class Produtorepository: 
 
     def cadastrar_produto(self,produto):
         conn = conectar()
@@ -14,11 +14,6 @@ class Repositoryproduto:
         conn.commit()
 
 
-
-
-reposP = Repositoryproduto()
-
-reposP.cadastrar_produto(p1)
 
 
         
