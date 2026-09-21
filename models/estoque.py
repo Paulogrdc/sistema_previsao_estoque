@@ -1,5 +1,5 @@
-from models.produto import Produto 
 from rich import inspect
+from models.produto import Produto
 
 class Estoque: 
     def __init__(self, id:int = 1  , produto:object = Produto, quantidade:int = 1 ):

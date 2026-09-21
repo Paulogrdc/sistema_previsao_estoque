@@ -34,4 +34,3 @@ class Produto:
 
 
 
-p1 = Produto("monitor", 2,  1034.22, "periferico", 20)

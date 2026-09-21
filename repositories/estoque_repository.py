@@ -1,16 +1,17 @@
 from database import conectar 
-from models.estoque import est2
 
 class Estoquerepository:  
 
 
-    def registrar_estoque(self, estoque):
+    def atualizar_estoque(self, estoque):
 
         conn = conectar()
         cur = conn.cursor()
 
-        cur.execute("INSERT INTO ESTOQUE (id, produto_id, quantidade) " \
-        "VALUES (%s,%s,%s)", (estoque.id, estoque.produto, estoque.quantidade))
+        cur.execute("UPDATE ESTOQUE " \
+        "SET quantidade =%s" \
+        "where produto_id = %s"\
+        (estoque.quantidade, estoque.produto))
 
         conn.commit()
 
