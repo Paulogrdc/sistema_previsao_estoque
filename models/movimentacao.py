@@ -2,8 +2,9 @@ from models.produto import p1
 from rich import inspect
 
 class Movimentacao: 
-    def __init__(self, id: int, data:str , produto:object , quantidade:int, tipo_movimentacao:str ):
+    def __init__(self, id:int, data:str , produto:object , quantidade:int, tipo_movimentacao:str ):
         self._id = id 
+        
         self.data = data 
         self.produto = produto 
         self.quantidade= quantidade 
