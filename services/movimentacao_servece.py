@@ -40,23 +40,31 @@ class Movimentacaoservece:
         print("Operação confirmada com sucesso! ")
 
 
-    def resgistrar_saida(self): 
-        pass 
+    def registrar_saida(self): 
         #1. Receber uma movimentação
-        mv1 = Movimentacao(2, "21/09/2026", p1.id, 2, "venda")
+        mv2 = Movimentacao(2, "21/09/2026", p1.id, 2, "venda")
+
         #2. Identificar que é uma entrada
         #3. Buscar o estoque relacionado ao produto
         est_p1 = Estoque(1, p1.id, 30) 
 
         #4. Chamar estoque.retirar_produto(quantidade)
         est_p1.retirar_produto(2)
+
         #5. Atualizar o estoque no banco
-        
+        est_r = Estoquerepository()
+        est_r.atualizar_estoque(est_p1)
+
         #6. Registrar a movimentação no banco
+        mov_r = Movimentacaorepository()
+        mov_r.registar_movimentacao(mv2)
+
         #7. Confirmar a operação
+        print("Operação confirmada com sucesso! ")
+
 
 
 
 movi_servece = Movimentacaoservece()
 
-movi_servece.registrar_entrada()
+movi_servece.registrar_saida()
