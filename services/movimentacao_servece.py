@@ -9,8 +9,8 @@ from repositories.movimentacao_repository import Movimentacaorepository
 
 # Cadastra o produto
 p1 = Produto("monitor", 1,  1034.22, "periferico", 20)
-pro_r = Produtorepository()
-pro_r.cadastrar_produto(p1)
+#pro_r = Produtorepository()
+#pro_r.cadastrar_produto(p1)
 
 
 
@@ -19,7 +19,7 @@ class Movimentacaoservece:
 
     def registrar_entrada(self): 
         #1. Receber uma movimentação
-        mv1 = Movimentacao(1, "21/09/2026", p1.id, est_p1.quantidade, "Compra")
+        mv1 = Movimentacao(1, "21/09/2026", p1.id, 30, "Compra")
 
         #2. Identificar que é uma entrada
         #3. Buscar o estoque relacionado ao produto
@@ -43,10 +43,15 @@ class Movimentacaoservece:
     def resgistrar_saida(self): 
         pass 
         #1. Receber uma movimentação
+        mv1 = Movimentacao(2, "21/09/2026", p1.id, 2, "venda")
         #2. Identificar que é uma entrada
         #3. Buscar o estoque relacionado ao produto
+        est_p1 = Estoque(1, p1.id, 30) 
+
         #4. Chamar estoque.retirar_produto(quantidade)
+        est_p1.retirar_produto(2)
         #5. Atualizar o estoque no banco
+        
         #6. Registrar a movimentação no banco
         #7. Confirmar a operação
 

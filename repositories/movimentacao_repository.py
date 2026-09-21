@@ -1,5 +1,4 @@
 from database import conectar 
-from models.movimentacao import mv1 
 
 
 class Movimentacaorepository: 

@@ -1,4 +1,3 @@
-from models.produto import p1 
 from rich import inspect
 
 class Movimentacao: 

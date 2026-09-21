@@ -1,5 +1,5 @@
 from database import conectar
-from models.produto import P2
+
 
 class Produtorepository: 
 

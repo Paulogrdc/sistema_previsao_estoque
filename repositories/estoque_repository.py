@@ -8,9 +8,8 @@ class Estoquerepository:
         conn = conectar()
         cur = conn.cursor()
 
-        cur.execute("UPDATE ESTOQUE " \
-        "SET quantidade =%s" \
-        "where produto_id = %s"\
+        cur.execute("UPDATE ESTOQUE SET quantidade =%s "\
+        "where produto_id = %s",
         (estoque.quantidade, estoque.produto))
 
         conn.commit()
