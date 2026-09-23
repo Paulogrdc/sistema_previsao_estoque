@@ -1,4 +1,3 @@
-from repositories.produto_repository import Produtorepository
 from repositories.estoque_repository import Estoquerepository
 from repositories.movimentacao_repository import Movimentacaorepository
 
@@ -20,7 +19,7 @@ class Movimentacaoservece:
         #6. Registrar a movimentação no banco
         mov_r = Movimentacaorepository()
         mov_r.registar_movimentacao(movimentacao)
-        
+
         #7. Confirmar a operação
         print("Operação confirmada com sucesso! ")
 

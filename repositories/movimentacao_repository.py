@@ -7,9 +7,9 @@ class Movimentacaorepository:
         conn = conectar()
         cur = conn.cursor()
 
-        cur.execute("INSERT INTO MOVIMENTACAO (id, data, produto_id, quantidade, tipo_movimentacao) " \
-        "VALUES (%s, %s,%s,%s,%s)",  
-        (movimentacao.id, movimentacao.data, movimentacao.produto, movimentacao.quantidade, movimentacao.tipo_movimentacao))
+        cur.execute("INSERT INTO MOVIMENTACAO (data, produto_id, quantidade, tipo_movimentacao) " \
+        "VALUES (%s,%s,%s,%s)",  
+        (movimentacao.data, movimentacao.produto, movimentacao.quantidade, movimentacao.tipo_movimentacao))
 
         conn.commit() 
 
