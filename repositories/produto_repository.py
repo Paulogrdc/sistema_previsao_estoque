@@ -14,6 +14,9 @@ class Produtorepository:
         conn.commit()
 
 
+        cur.close()
+        conn.close()
+
 
 
         

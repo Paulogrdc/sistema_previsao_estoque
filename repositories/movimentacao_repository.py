@@ -3,7 +3,7 @@ from database import conectar
 
 class Movimentacaorepository: 
 
-    def registar_movimentacao(self,movimentacao):
+    def registrar_movimentacao(self,movimentacao):
         conn = conectar()
         cur = conn.cursor()
 
