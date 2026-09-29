@@ -1,11 +1,12 @@
 from repositories.estoque_repository import Estoquerepository
 from repositories.movimentacao_repository import Movimentacaorepository
+from database import conectar
 
 class MovimentacaoService: 
 
 
     def registrar_entrada(self, estoque, movimentacao): 
-        #1. Receber uma movimentação e um estoque atraves de paramentros. 
+        #1. Recebe uma movimentação e o estoque atraves de paramentros. 
     
         #2. Chamar estoque.receber_produto(quantidade)
         estoque.receber_produto(movimentacao.quantidade)

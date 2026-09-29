@@ -3,7 +3,7 @@ from database import conectar
 class Estoquerepository:  
 
 
-    def atualizar_estoque(self, estoque):
+    def atualizar_estoque(self, estoque, conn, cur):
 
         conn = conectar()
         cur = conn.cursor()
