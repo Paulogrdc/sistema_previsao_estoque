@@ -5,37 +5,49 @@ from database import conectar
 class MovimentacaoService: 
 
 
-    def registrar_entrada(self, estoque, movimentacao): 
-        #1. Recebe uma movimentação e o estoque atraves de paramentros. 
+    def registrar_entrada(self, estoque, movimentacao):
+        #1. Cria a conexão com o banco
+        conn = conectar()
+
+        #2. Recebe uma movimentação e o estoque atraves de paramentros. 
     
-        #2. Chamar estoque.receber_produto(quantidade)
+        #3. Chama o estoque.receber_produto(quantidade)
         estoque.receber_produto(movimentacao.quantidade)
 
-        #3. Atualizar o estoque no banco
+        #4. Atualizar o estoque no banco
         est_r = Estoquerepository()
-        est_r.atualizar_estoque(estoque)
+        est_r.atualizar_estoque(estoque,conn)
 
-        #4. Registrar a movimentação no banco
+        #5. Registrar a movimentação no banco
         mov_r = Movimentacaorepository()
-        mov_r.registrar_movimentacao(movimentacao)
+        mov_r.registrar_movimentacao(movimentacao,conn)
 
-        #5. Confirmar a operação
-        # criar uma função para isso
+        #6. Confirmar a operação
+
+        #7. fecha a operação
+        conn.close()
+
+        
 
 
     def registrar_saida(self, estoque, movimentacao): 
-        #1. Receber uma movimentação e um estoque atraves de paramentros. 
+        #1. Cria a conexão com o banco
+        conn = conectar()
+        #2. Receber uma movimentação e um estoque através de parâmetros. 
 
-        #2. Chamar estoque.retirar_produto(quantidade)
+        #3. Chamar estoque.retirar_produto(quantidade)
         estoque.retirar_produto(movimentacao.quantidade)
 
-        #3. Atualizar o estoque no banco
+        #4. Atualiza o estoque no banco
         est_r = Estoquerepository()
-        est_r.atualizar_estoque(estoque)
+        est_r.atualizar_estoque(estoque,conn)
 
-        #4. Registrar a movimentação no banco
+        #5. Registra a movimentação no banco
         mov_r = Movimentacaorepository()
-        mov_r.registar_movimentacao(movimentacao)
+        mov_r.registrar_movimentacao(movimentacao,conn)
 
-        #5. Confirmar a operação
-        # criar uma função para isso
+        #6. Confirmar a operação
+
+        #7. fecha a operação
+        conn.close()
+
