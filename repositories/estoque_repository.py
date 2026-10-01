@@ -1,4 +1,3 @@
-from database import conectar 
 
 class Estoquerepository:  
 
@@ -7,9 +6,6 @@ class Estoquerepository:
 
         cur = conn.cursor()
 
-        cur.execute("UPDATE ESTOQUE SET quantidade =%s "\
+        cur.execute("UPDATE ESTOQUE SET quantidade = %s "\
         "where produto_id = %s",
         (estoque.quantidade, estoque.produto))
-
-        cur.close()
-

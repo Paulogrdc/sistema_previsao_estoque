@@ -9,23 +9,33 @@ class MovimentacaoService:
         #1. Cria a conexão com o banco
         conn = conectar()
 
-        #2. Recebe uma movimentação e o estoque atraves de paramentros. 
-    
-        #3. Chama o estoque.receber_produto(quantidade)
-        estoque.receber_produto(movimentacao.quantidade)
+        try: 
+            #2. Recebe uma movimentação e o estoque atraves de paramentros. 
+        
+            #3. Chama o estoque.receber_produto(quantidade)
+            estoque.receber_produto(movimentacao.quantidade)
 
-        #4. Atualizar o estoque no banco
-        est_r = Estoquerepository()
-        est_r.atualizar_estoque(estoque,conn)
+            #4. Atualizar o estoque no banco
+            est_r = Estoquerepository()
+            est_r.atualizar_estoque(estoque,conn)
 
-        #5. Registrar a movimentação no banco
-        mov_r = Movimentacaorepository()
-        mov_r.registrar_movimentacao(movimentacao,conn)
+            #5. Registrar a movimentação no banco
+            mov_r = Movimentacaorepository()
+            mov_r.registrar_movimentacao(movimentacao,conn)
 
-        #6. Confirmar a operação
+            #6 commita a trasação 
+            conn.commit()
 
-        #7. fecha a operação
-        conn.close()
+            #7. Confirmar a operação
+            print("Operação confirmada com sucesso!")
+
+        except Exception as erro: 
+            print(f"A operação falhou! O seu erro é de {erro}")
+            conn.rollback()
+
+        finally: 
+            #8.fecha a operação
+            conn.close()
 
         
 
@@ -33,21 +43,32 @@ class MovimentacaoService:
     def registrar_saida(self, estoque, movimentacao): 
         #1. Cria a conexão com o banco
         conn = conectar()
-        #2. Receber uma movimentação e um estoque através de parâmetros. 
 
-        #3. Chamar estoque.retirar_produto(quantidade)
-        estoque.retirar_produto(movimentacao.quantidade)
+        try: 
+            #2. Receber uma movimentação e um estoque através de parâmetros. 
 
-        #4. Atualiza o estoque no banco
-        est_r = Estoquerepository()
-        est_r.atualizar_estoque(estoque,conn)
+            #3. Chamar estoque.retirar_produto(quantidade)
+            estoque.retirar_produto(movimentacao.quantidade)
 
-        #5. Registra a movimentação no banco
-        mov_r = Movimentacaorepository()
-        mov_r.registrar_movimentacao(movimentacao,conn)
+            #4. Atualiza o estoque no banco
+            est_r = Estoquerepository()
+            est_r.atualizar_estoque(estoque,conn)
 
-        #6. Confirmar a operação
+            #5. Registra a movimentação no banco
+            mov_r = Movimentacaorepository()
+            mov_r.registrar_movimentacao(movimentacao,conn)
 
-        #7. fecha a operação
-        conn.close()
+            #6 commita a transação
+            conn.commit()
+
+            #7. Confirmar a operação
+            print("Operação confirmada com sucesso!")
+
+        except Exception as erro: 
+            print(f"A Operação falhou! O seu erro é de {erro.__class__}")
+            conn.rollback()
+
+        finally:     
+            #8. fecha a operação
+            conn.close()
 
