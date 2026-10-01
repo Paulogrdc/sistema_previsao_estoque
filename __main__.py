@@ -14,7 +14,8 @@ conn = conectar()
 movimentacao = Movimentacao("01/10/2026", 2, 5 , "Compra")
 
 reposy_estoque = Estoquerepository()
-reposy_estoque.buscar_estoque(2, conn)
+estoque = reposy_estoque.buscar_estoque(2, conn)
+print(estoque.quantidade)
 
 #estoque = Estoque(2,2, 10)
 #verificar_tipo_trasacao(movimentacao, estoque, MovimentacaoService())

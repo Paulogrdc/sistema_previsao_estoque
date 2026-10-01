@@ -1,3 +1,5 @@
+from models.estoque import Estoque 
+
 
 class Estoquerepository:  
 
@@ -19,10 +21,15 @@ class Estoquerepository:
         cur.execute("SELECT id, produto_id, quantidade " \
         "FROM ESTOQUE " \
         "WHERE produto_id = %s", 
-        (produto_id))
+        (produto_id,))
 
         #Retorna as linhas do estoque do produto
         rows = list(cur.fetchone())
-        print(rows)
+
+        if rows != None: 
+            estoque = Estoque(rows[0], rows[1], rows[2])
+            return estoque 
+        else: 
+            return None
         
 

@@ -1,6 +1,6 @@
 
 class Movimentacao: 
-    def __init__(self, data:str , produto:object , quantidade:int, tipo_movimentacao:str ):
+    def __init__(self, data:str , produto:int , quantidade:int, tipo_movimentacao:str ):
         self.data = data 
         self.produto = produto 
         self.quantidade= quantidade 
