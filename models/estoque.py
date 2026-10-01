@@ -2,7 +2,7 @@ from rich import inspect
 from models.produto import Produto
 
 class Estoque: 
-    def __init__(self, id:int = 1  , produto:object = Produto, quantidade:int = 1 ):
+    def __init__(self, id:int = 1  , produto:object = Produto.id , quantidade:int = 1 ):
          self.produto = produto
          self._id=  id  
          self._quantidade = None 

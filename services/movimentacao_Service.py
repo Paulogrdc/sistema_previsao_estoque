@@ -65,7 +65,7 @@ class MovimentacaoService:
             print("Operação confirmada com sucesso!")
 
         except Exception as erro: 
-            print(f"A Operação falhou! O seu erro é de {erro.__class__}")
+            print(f"A Operação falhou! O seu erro é de {erro}")
             conn.rollback()
 
         finally:     
