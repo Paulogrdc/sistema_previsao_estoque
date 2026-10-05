@@ -17,8 +17,8 @@ def Criar_produtos():
     return p 
 
 
-def verificar_tipo_trasacao(movimentacao, estoque, service_mv):  
+def verificar_tipo_trasacao(movimentacao, service_mv):  
     if movimentacao.tipo_movimentacao == "Venda": 
-        service_mv.registrar_saida(estoque, movimentacao)
+        service_mv.registrar_saida(movimentacao)
     else: 
-        service_mv.registrar_entrada(estoque,movimentacao)
+        service_mv.registrar_entrada(movimentacao)

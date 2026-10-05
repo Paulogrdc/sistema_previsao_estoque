@@ -5,28 +5,31 @@ from database import conectar
 class MovimentacaoService: 
 
 
-    def registrar_entrada(self, estoque, movimentacao):
+    def registrar_entrada(self,movimentacao):
         #1. Cria a conexão com o banco
         conn = conectar()
 
         try: 
-            #2. Recebe uma movimentação e o estoque atraves de paramentros. 
+            #2.Receber uma movimentação atraves de paramentro. 
         
-            #3. Chama o estoque.receber_produto(quantidade)
+            #3 buscar o estoque 
+            est_r = Estoquerepository()
+            estoque = est_r.buscar_estoque(movimentacao.produto,conn)
+
+            #4. Chamar o estoque.receber_produto(quantidade)
             estoque.receber_produto(movimentacao.quantidade)
 
-            #4. Atualizar o estoque no banco
-            est_r = Estoquerepository()
-            est_r.atualizar_estoque(estoque,conn)
+            #5. Atualizar o estoque no banco
+            est_r.atualizar_estoque(estoque, conn)
 
-            #5. Registrar a movimentação no banco
+            #6. Registrar a movimentação no banco
             mov_r = Movimentacaorepository()
-            mov_r.registrar_movimentacao(movimentacao,conn)
+            mov_r.registrar_movimentacao(movimentacao,conn)   
 
-            #6 commita a trasação 
+            #7 commitar a trasação 
             conn.commit()
 
-            #7. Confirmar a operação
+            #8. Confirmar a operação
             print("Operação confirmada com sucesso!")
 
         except Exception as erro: 
@@ -34,34 +37,36 @@ class MovimentacaoService:
             conn.rollback()
 
         finally: 
-            #8.fecha a operação
+            #9.fechar a operação
             conn.close()
 
         
 
-
-    def registrar_saida(self, estoque, movimentacao): 
-        #1. Cria a conexão com o banco
+    def registrar_saida(self, movimentacao): 
+        #1. Criar a conexão com o banco
         conn = conectar()
 
         try: 
-            #2. Receber uma movimentação e um estoque através de parâmetros. 
+            #2.Receber uma movimentação atraves de paramentro. 
 
-            #3. Chamar estoque.retirar_produto(quantidade)
+            #3 buscar o estoque 
+            est_r = Estoquerepository()
+            estoque = est_r.buscar_estoque(movimentacao.produto,conn)
+
+            #4 Atualizar o estoque em memória
             estoque.retirar_produto(movimentacao.quantidade)
 
-            #4. Atualiza o estoque no banco
-            est_r = Estoquerepository()
+            #5. Atualizar o estoque no banco
             est_r.atualizar_estoque(estoque,conn)
 
-            #5. Registra a movimentação no banco
+            #6. Registrar a movimentação no banco
             mov_r = Movimentacaorepository()
             mov_r.registrar_movimentacao(movimentacao,conn)
 
-            #6 commita a transação
+            #7 commitar a transação
             conn.commit()
 
-            #7. Confirmar a operação
+            #8. Confirmar a operação
             print("Operação confirmada com sucesso!")
 
         except Exception as erro: 
@@ -69,6 +74,5 @@ class MovimentacaoService:
             conn.rollback()
 
         finally:     
-            #8. fecha a operação
-            conn.close()
-
+            #9. fechar a operação
+            pass
