@@ -1,20 +1,28 @@
 from models.produto import Produto 
 from repositories.produto_repository import Produtorepository
+from services.movimentacao_Service import MovimentacaoService
 
 
-def Criar_produtos():
-    nome = input("Insira o nome do produto: ")
-    id = int(input("Insira um id para o produto: "))
-    preco = float(input("Insira o preço do produto: "))
-    categoria = input("Qual a categoria do produto? ")
-    est_min = int(input("Qual o estoque minimo do Produto? ")) 
+def add_Novo_Produto():
+    nome = input("Digite o nome do Produto: ")
+    id = int(input("Digite um ID para o produto: "))
+    preco = float(input("Digite o preço do produto: "))
+    categoria = input("Digite a categoria do produto: ")
+    est_min = int(input("Digite um estoque mínimo para o Proiduto: "))
 
-    p = Produto(nome, id, preco, categoria, est_min)
+    produto = Produto(nome, id, preco, categoria, est_min)
+    return produto 
 
-    Produto_repo = Produtorepository()
-    Produto_repo.cadastrar_produto(p)
+    # Você não pode adicionar um produto Repetido
 
-    return p 
+def consultar_Produto(): 
+    pass
+
+def add_Movimnentacao(): 
+    pass 
+
+def menu(): 
+    pass 
 
 
 def verificar_tipo_trasacao(movimentacao, service_mv):  
