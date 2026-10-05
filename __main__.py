@@ -1,4 +1,7 @@
-from functionality.functions import *
+from functionality.functions import menu 
+
+
+menu()
 
 
 
