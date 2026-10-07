@@ -1,5 +1,6 @@
 from models.produto import Produto 
 from repositories.produto_repository import Produtorepository
+from models.movimentacao import Movimentacao
 from services.movimentacao_Service import MovimentacaoService
 from rich import print 
 from rich.console import Console
@@ -45,8 +46,21 @@ def Consultar_Produto():
         print("Produto não localizado. ") 
 
 
-def add_Movimnentacao():
-    pass 
+def verificar_tipo_trasacao(movimentacao, mv_service):  
+    if movimentacao.tipo_movimentacao == "Venda": 
+        mv_service.registrar_saida(movimentacao)
+    else: 
+        mv_service.registrar_entrada(movimentacao)
+
+
+def add_nova_Movimnentacao():
+    data = input("Digite a data de compra: ")
+    produto = int(input("Digite o id do produto: "))
+    quantidade = int(input("Digite a quantidade dos produtos: "))
+    tipo_movimentacao = input("Digite o tipo da movimentação: ")
+
+    movimentacao = Movimentacao(data, produto, quantidade, tipo_movimentacao)
+    return Produto
 
 def menu(): 
     catalago()
@@ -79,11 +93,3 @@ def menu():
             case 4: 
                 break
                 
-
-
-
-def verificar_tipo_trasacao(movimentacao, service_mv):  
-    if movimentacao.tipo_movimentacao == "Venda": 
-        service_mv.registrar_saida(movimentacao)
-    else: 
-        service_mv.registrar_entrada(movimentacao)
