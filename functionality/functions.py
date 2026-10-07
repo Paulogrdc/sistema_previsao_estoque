@@ -1,7 +1,9 @@
 from models.produto import Produto 
 from repositories.produto_repository import Produtorepository
 from services.movimentacao_Service import MovimentacaoService
-
+from rich import print 
+from rich.console import Console
+from rich.table import Table 
 
 
 def catalago():
@@ -9,6 +11,7 @@ def catalago():
     print("2-Consultar Produto")
     print("3-Adicionar Movimentação")
     print("4-Sair do catalago")
+
 
 def add_Novo_Produto():
     nome = input("Digite o nome do Produto: ")
@@ -20,12 +23,29 @@ def add_Novo_Produto():
     produto = Produto(nome, id, preco, categoria, est_min)
     return produto 
 
-    # Você não pode adicionar um produto Repetido
 
-def consultar_Produto(): 
-    pass
+def Consultar_Produto():
+    nome_produto = input("Qual o Produdo você deseja consultar? ")
 
-def add_Movimnentacao(): 
+    repository_produto = Produtorepository()
+    tabela_produto = repository_produto.buscar_produto(nome_produto)
+
+    if tabela_produto != None: 
+        caixa = Table(title="PRODUTO")
+        caixa.add_column("ID")
+        caixa.add_column("Nome")
+        caixa.add_column("PRECO")
+        caixa.add_column("CATEGORIA")
+        caixa.add_column("ESTOQUE MÍNIMO")
+
+        caixa.add_row(str(tabela_produto[0]),str(tabela_produto[1]), str(tabela_produto[2]), str(tabela_produto[3]), str(tabela_produto[4]))
+        console = Console()
+        console.print(caixa) 
+    else: 
+        print("Produto não localizado. ") 
+
+
+def add_Movimnentacao():
     pass 
 
 def menu(): 
@@ -44,14 +64,18 @@ def menu():
                 except Exception as erro: 
                     ja_existe_produto = erro
                     if ja_existe_produto:
-                        print("Error! Já Existe um Produto com esse ID.")
+                        print("[/red]Error! Já Existe um Produto com esse ID.[]")
                     else: 
-                        print("ops! Algo deu errado.")
+                        print("[/red] ops! Algo deu errado.[/]")
 
-            case 2: 
-                pass 
+            case 2:
+                Consultar_Produto()
+                catalago()
+                opcao = int(input("Escolha uma opção: "))
+
             case 3: 
                 pass
+
             case 4: 
                 break
                 

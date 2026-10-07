@@ -17,6 +17,19 @@ class Produtorepository:
         cur.close()
         conn.close()
 
+    def buscar_produto(self, nome_produto): 
+        conn = conectar()
+        cur = conn.cursor()
+
+        cur.execute(
+        "SELECT id, nome_produto, preco, categoria, estoque_min " \
+        "FROM PRODUTO " \
+        "WHERE nome_produto = %s", 
+        (nome_produto,)
+        )
+
+        rows = cur.fetchone()
+        return rows 
 
 
         
