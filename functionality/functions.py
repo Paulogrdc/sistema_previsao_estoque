@@ -54,13 +54,15 @@ def verificar_tipo_trasacao(movimentacao, mv_service):
 
 
 def add_nova_Movimnentacao():
-    data = input("Digite a data de compra: ")
+    data = input("Digite a data: ")
     produto = int(input("Digite o id do produto: "))
-    quantidade = int(input("Digite a quantidade dos produtos: "))
+    quantidade = int(input("Digite a quantidade: "))
     tipo_movimentacao = input("Digite o tipo da movimentação: ")
 
     movimentacao = Movimentacao(data, produto, quantidade, tipo_movimentacao)
-    return Produto
+    return movimentacao
+
+
 
 def menu(): 
     catalago()
@@ -88,8 +90,12 @@ def menu():
                 opcao = int(input("Escolha uma opção: "))
 
             case 3: 
-                pass
-
+                mv = add_nova_Movimnentacao()
+                mv_service = MovimentacaoService()
+                verificar_tipo_trasacao(mv, mv_service)
+                catalago()
+                opcao = int(input("Escolha uma opção: "))
+                
             case 4: 
                 break
                 
