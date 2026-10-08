@@ -5,6 +5,8 @@ from services.movimentacao_Service import MovimentacaoService
 from rich import print 
 from rich.console import Console
 from rich.table import Table 
+from database import conectar
+from repositories.estoque_repository import Estoquerepository
 
 
 def catalago():
@@ -26,10 +28,14 @@ def add_Novo_Produto():
 
 
 def Consultar_Produto():
+    conn = conectar()
     nome_produto = input("Qual o Produdo você deseja consultar? ")
 
     repository_produto = Produtorepository()
     tabela_produto = repository_produto.buscar_produto(nome_produto)
+
+    repository_estoque = Estoquerepository()
+    estoque_produto = repository_estoque.buscar_estoque(tabela_produto[0], conn)
 
     if tabela_produto != None: 
         caixa = Table(title="PRODUTO")
@@ -37,9 +43,9 @@ def Consultar_Produto():
         caixa.add_column("Nome")
         caixa.add_column("PRECO")
         caixa.add_column("CATEGORIA")
-        caixa.add_column("ESTOQUE MÍNIMO")
+        caixa.add_column("ESTOQUE")
 
-        caixa.add_row(str(tabela_produto[0]),str(tabela_produto[1]), str(tabela_produto[2]), str(tabela_produto[3]), str(tabela_produto[4]))
+        caixa.add_row(str(tabela_produto[0]),str(tabela_produto[1]), str(tabela_produto[2]), str(tabela_produto[3]),str(estoque_produto.quantidade))
         console = Console()
         console.print(caixa) 
     else: 
