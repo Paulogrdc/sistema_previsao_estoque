@@ -69,6 +69,9 @@ def add_nova_Movimnentacao():
     return movimentacao
 
 
+def ver_historico_mv():
+    pass 
+
 
 def menu(): 
     catalago()
