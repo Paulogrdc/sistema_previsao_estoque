@@ -1,6 +1,7 @@
 from models.produto import Produto 
 from repositories.produto_repository import Produtorepository
 from models.movimentacao import Movimentacao
+from repositories.movimentacao_repository import Movimentacaorepository
 from services.movimentacao_Service import MovimentacaoService
 from rich import print 
 from rich.console import Console
@@ -13,7 +14,8 @@ def catalago():
     print("1-Adicionar Novo Produto ")
     print("2-Consultar Produto")
     print("3-Adicionar Movimentação")
-    print("4-Sair do catalago")
+    print("4-Consultar historico")
+    print("5-Sair do catalago")
 
 
 def add_Novo_Produto():
@@ -70,7 +72,11 @@ def add_nova_Movimnentacao():
 
 
 def ver_historico_mv():
-    pass 
+    conn = conectar()
+
+    repository_movimentacao = Movimentacaorepository()
+    historico = repository_movimentacao.buscar_historico(conn)
+    print(historico)
 
 
 def menu(): 
@@ -104,7 +110,13 @@ def menu():
                 verificar_tipo_trasacao(mv, mv_service)
                 catalago()
                 opcao = int(input("Escolha uma opção: "))
-                
+
             case 4: 
+                ver_historico_mv()
+                catalago()
+                opcao = int(input("Escolha uma opção: "))
+
+                
+            case 5: 
                 break
                 
