@@ -28,7 +28,7 @@ class Produtorepository:
         (nome_produto,)
         )
 
-        rows = cur.fetchone()
+        rows = cur.fetchone()        
         return rows 
 
 

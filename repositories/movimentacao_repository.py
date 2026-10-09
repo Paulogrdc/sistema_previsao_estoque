@@ -1,3 +1,5 @@
+from repositories.produto_repository import Produtorepository
+
 
 class Movimentacaorepository: 
 
@@ -9,10 +11,14 @@ class Movimentacaorepository:
         (movimentacao.data, movimentacao.produto, movimentacao.quantidade, movimentacao.tipo_movimentacao))
 
 
-    def buscar_historico(self,conn): 
+    def buscar_movimentacao(self,conn, movimentacao_produto): 
+        repository_produto = Produtorepository()
+        produto = repository_produto.buscar_produto(movimentacao_produto)
+        produto_id = produto[0] 
+
         cur =  conn.cursor()
 
-        cur.execute("SELECT * FROM MOVIMENTACAO;")
-        historico = cur.fetchone()
-
+        cur.execute("SELECT * FROM MOVIMENTACAO WHERE produto_id = %s;", (produto_id,))
+        
+        historico = cur.fetchall()
         return historico 

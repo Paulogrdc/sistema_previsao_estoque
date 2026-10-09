@@ -71,12 +71,27 @@ def add_nova_Movimnentacao():
     return movimentacao
 
 
-def ver_historico_mv():
+def ver_historico_mv(): 
     conn = conectar()
+    movimentacao_produto = input("Digite qual movimentação do produto você deseja ver: ")
 
     repository_movimentacao = Movimentacaorepository()
-    historico = repository_movimentacao.buscar_historico(conn)
-    print(historico)
+    historico_produto = repository_movimentacao.buscar_movimentacao(conn, movimentacao_produto)
+
+    caixa = Table(title="MOVIMENTAÇÕES")
+    caixa.add_column("ID")
+    caixa.add_column("DATA")
+    caixa.add_column("PRODUTO_ID")
+    caixa.add_column("QUANTIDADE")
+    caixa.add_column("TIPO MIVIMENTAÇÃO")
+
+    for i , v in enumerate(historico_produto):  
+        if historico_produto != None:
+            caixa.add_row(str(v[0]), str(v[1]), str(v[2]), str(v[3]), str(v[4]))
+            
+    console = Console()
+    console.print(caixa)
+
 
 
 def menu(): 
