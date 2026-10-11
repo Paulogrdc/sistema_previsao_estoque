@@ -1,7 +1,7 @@
-from repositories.produto_repository import Produtorepository
+from repositories.produto_repository import ProdutoRepository
 
 
-class Movimentacaorepository: 
+class MovimentacaoRepository: 
 
     def registrar_movimentacao(self,movimentacao,conn):
         cur = conn.cursor()
@@ -12,7 +12,7 @@ class Movimentacaorepository:
 
 
     def buscar_movimentacao(self,conn, movimentacao_produto): 
-        repository_produto = Produtorepository()
+        repository_produto = ProdutoRepository()
         produto = repository_produto.buscar_produto(movimentacao_produto,conn)
         produto_id = produto[0] 
 

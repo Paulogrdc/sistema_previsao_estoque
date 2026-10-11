@@ -1,7 +1,7 @@
 from models.estoque import Estoque 
 
 
-class Estoquerepository:  
+class EstoqueRepository:  
 
 
     def atualizar_estoque(self, estoque, conn):

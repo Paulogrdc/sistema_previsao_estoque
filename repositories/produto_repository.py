@@ -1,7 +1,7 @@
 from database import conectar
 
 
-class Produtorepository: 
+class ProdutoRepository: 
 
     def cadastrar_produto(self,produto, conn):
         cur = conn.cursor()

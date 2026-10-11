@@ -1,13 +1,13 @@
 from models.produto import Produto 
-from repositories.produto_repository import Produtorepository
+from repositories.produto_repository import ProdutoRepository
 from models.movimentacao import Movimentacao
-from repositories.movimentacao_repository import Movimentacaorepository
+from repositories.movimentacao_repository import MovimentacaoRepository
 from services.movimentacao_Service import MovimentacaoService
 from rich import print 
 from rich.console import Console
 from rich.table import Table 
 from database import conectar
-from repositories.estoque_repository import Estoquerepository
+from repositories.estoque_repository import EstoqueRepository
 
 
 def catalago():
@@ -33,10 +33,10 @@ def Consultar_Produto():
     conn = conectar()
     nome_produto = input("Qual o Produdo você deseja consultar? ")
 
-    repository_produto = Produtorepository()
+    repository_produto = ProdutoRepository()
     tabela_produto = repository_produto.buscar_produto(nome_produto,conn)
 
-    repository_estoque = Estoquerepository()
+    repository_estoque = EstoqueRepository()
     estoque_produto = repository_estoque.buscar_estoque(tabela_produto[0], conn)
 
     if tabela_produto != None: 
@@ -75,7 +75,7 @@ def ver_historico_mv():
     conn = conectar()
     movimentacao_produto = input("Digite qual movimentação do produto você deseja ver: ")
 
-    repository_movimentacao = Movimentacaorepository()
+    repository_movimentacao = MovimentacaoRepository()
     historico_produto = repository_movimentacao.buscar_movimentacao(conn, movimentacao_produto)
 
     caixa = Table(title="MOVIMENTAÇÕES")
@@ -104,10 +104,10 @@ def menu():
                 try: 
                     conn = conectar()
                     produto = add_Novo_Produto()
-                    repository_produto = Produtorepository()
+                    repository_produto = ProdutoRepository()
                     repository_produto.cadastrar_produto(produto,conn)
 
-                    repository_estoque = Estoquerepository()
+                    repository_estoque = EstoqueRepository()
                     repository_estoque.inserir_estoque(conn, produto)
 
                     conn.commit()
