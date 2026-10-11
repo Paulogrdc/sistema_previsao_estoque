@@ -13,7 +13,7 @@ class Movimentacaorepository:
 
     def buscar_movimentacao(self,conn, movimentacao_produto): 
         repository_produto = Produtorepository()
-        produto = repository_produto.buscar_produto(movimentacao_produto)
+        produto = repository_produto.buscar_produto(movimentacao_produto,conn)
         produto_id = produto[0] 
 
         cur =  conn.cursor()

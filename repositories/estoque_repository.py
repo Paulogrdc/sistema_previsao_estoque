@@ -31,5 +31,15 @@ class Estoquerepository:
             return estoque 
         else: 
             return None
-        
+
+
+    def inserir_estoque(self,conn, produto):
+
+        cur = conn.cursor()
+
+        cur.execute("" \
+        "INSERT INTO ESTOQUE (produto_id, quantidade) " \
+        "VALUES (%s, %s)", 
+        (produto.id, 0 ))
+
 

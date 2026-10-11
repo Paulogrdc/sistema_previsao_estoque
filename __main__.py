@@ -1,7 +1,15 @@
 from functionality.functions import menu 
 
 
-menu()
+
+def main(): 
+
+    menu()
+
+
+
+if __name__ == "__main__": 
+    menu()
 
 
 

@@ -34,7 +34,7 @@ def Consultar_Produto():
     nome_produto = input("Qual o Produdo você deseja consultar? ")
 
     repository_produto = Produtorepository()
-    tabela_produto = repository_produto.buscar_produto(nome_produto)
+    tabela_produto = repository_produto.buscar_produto(nome_produto,conn)
 
     repository_estoque = Estoquerepository()
     estoque_produto = repository_estoque.buscar_estoque(tabela_produto[0], conn)
@@ -102,17 +102,28 @@ def menu():
 
             case 1: 
                 try: 
+                    conn = conectar()
                     produto = add_Novo_Produto()
                     repository_produto = Produtorepository()
-                    repository_produto.cadastrar_produto(produto)
+                    repository_produto.cadastrar_produto(produto,conn)
+
+                    repository_estoque = Estoquerepository()
+                    repository_estoque.inserir_estoque(conn, produto)
+
+                    conn.commit()
+
                     catalago()
                     opcao = int(input("Escolha uma opção: "))
+
                 except Exception as erro: 
                     ja_existe_produto = erro
                     if ja_existe_produto:
-                        print("[/red]Error! Já Existe um Produto com esse ID.[]")
+                        print(f"[red]Error! Já Existe um Produto com esse ID.[/] e {erro}")
                     else: 
-                        print("[/red] ops! Algo deu errado.[/]")
+                        print("[red] ops! Algo deu errado.[/]")
+
+                finally: 
+                    conn.close()
 
             case 2:
                 Consultar_Produto()
