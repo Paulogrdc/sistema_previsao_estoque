@@ -55,7 +55,7 @@ def Consultar_Produto():
 
 
 def verificar_tipo_trasacao(movimentacao, mv_service):  
-    if movimentacao.tipo_movimentacao == "Venda": 
+    if movimentacao.tipo_movimentacao == "VENDA": 
         mv_service.registrar_saida(movimentacao)
     else: 
         mv_service.registrar_entrada(movimentacao)
