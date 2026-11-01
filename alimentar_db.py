@@ -15,3 +15,18 @@ with open("movimentacoes_historicas_3_anos.csv", "r", encoding="utf-8", newline=
         )
         verificar_tipo_trasacao(mv, MovimentacaoService())
 
+
+
+from database import conectar
+import csv
+conn = conectar()
+
+with conn.cursor() as cur: 
+    cur.execute("SELECT nome_produto from PRODUTO;")
+    produtos = cur.fetchall()
+    
+with open("Produdos.csv", 'r+', encoding="utf-8", newline='') as arquivo:
+    for linha in arquivo: 
+        arquivo.write(linha.replace(")", " "))
+
+
