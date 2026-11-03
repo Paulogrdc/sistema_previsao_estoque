@@ -25,8 +25,14 @@ with conn.cursor() as cur:
     cur.execute("SELECT nome_produto from PRODUTO;")
     produtos = cur.fetchall()
     
-with open("Produdos.csv", 'r+', encoding="utf-8", newline='') as arquivo:
-    for linha in arquivo: 
-        arquivo.write(linha.replace(")", " "))
-
-
+with open("Produtos.csv", 'w+', encoding="utf-8", newline='') as arquivo:
+    arquivo.write("nome_produto")
+    char = ["(", ")"]
+    for linha in arquivo:
+        arquivo.write("\n")
+        for c in char:
+            if c in linha : 
+                arquivo.write(str(linha).replace(c, " "))
+            else:
+                arquivo.write(str(linha))
+            
