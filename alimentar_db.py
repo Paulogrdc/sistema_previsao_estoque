@@ -22,10 +22,11 @@ import csv
 conn = conectar()
 
 with conn.cursor() as cur: 
-    cur.execute("SELECT nome_produto from PRODUTO;")
+    cur.execute("SELECT id, nome_produto from PRODUTO;")
     produtos = cur.fetchall()
     
 with open("Produtos.csv", 'w+', encoding="utf-8", newline='') as arquivo:
+    arquivo.write("id,")
     arquivo.write("nome_produto")
     for p in produtos:
         arquivo.write("\n")
