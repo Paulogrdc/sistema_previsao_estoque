@@ -27,12 +27,7 @@ with conn.cursor() as cur:
     
 with open("Produtos.csv", 'w+', encoding="utf-8", newline='') as arquivo:
     arquivo.write("nome_produto")
-    char = ["(", ")"]
-    for linha in arquivo:
+    for p in produtos:
         arquivo.write("\n")
-        for c in char:
-            if c in linha : 
-                arquivo.write(str(linha).replace(c, " "))
-            else:
-                arquivo.write(str(linha))
+        arquivo.write(str(p).replace("(", "").replace(")", " "))  # Aqui jaz o poder do  encadeamento com replace. 
             
